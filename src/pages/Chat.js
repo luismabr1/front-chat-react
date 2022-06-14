@@ -118,6 +118,8 @@ const Chat = () => {
 								/>
 							);
 						})}
+
+						{/* por aqui puedo meter el dropzone */}
 					<TextInput
 						value={messageToSend}
 						onChange={(e) => handleChange(e)}

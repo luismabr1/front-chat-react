@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 //Components
-import { Hero, Card, CardGrid } from '../components';
+import { Hero, Card, CardGrid, GoBackButton } from '../components';
 
 // State
 import { state } from '../state';
@@ -10,7 +10,7 @@ const Home = () => {
 	const snap = useSnapshot(state);
 
 	const getUsers = async () => {
-		const users = await (await fetch('/api/user')).json();
+		const users = await (await fetch('/api/room')).json();
 		state.users = users.data;
 	};
 
@@ -21,7 +21,8 @@ const Home = () => {
 	return (
 
 		<>
-			<Hero title="Bienvenidos a la sala situacional" subtitle="usuarios:">
+			<Hero title="Bienvenidos a la sala situacional" subtitle="Salas:">
+				<GoBackButton />
 				<CardGrid>
 					{snap.users.length &&
 						snap.users.map((user) => {
@@ -31,7 +32,7 @@ const Home = () => {
 									id={user._id}
 									title={user.name}
 									email={user.email}
-									button="Select User"
+									button="Elegir Sala"
 									route="user"
 								/>
 							);
